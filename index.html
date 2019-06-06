@@ -5,23 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>Document</title>
 </head>
 
 <body>
+    
+    <div id="buttons">
+        <button data-animal="jellyfish">Jellyfish</button>
+        <button data-animal="sharks">Sharks</button>
+        <button data-animal="panthers">Panthers</button>
+        <button data-animal="pandas">Pandas</button>
+        <button data-animal="unicorns">Unicorns</button>
+        <button data-animal="owls">Owls</button>
 
-
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
+        let giphyAPIKey = 'CB3u9m9EcYrw3EnygcS0FX4P91gsyN8N'
+
+
+        $("button").on("click,", function () {
+            var animal = $(this).attr("data-animal");
+            var giphyURL = 'http://api.giphy.com/v1/gifs/search?q=' +
+                giphyAPIKey + '&limit=8';
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var results = response.data;
+
+                    for (var i = 0; i < results.length; i++) {
+                        var gifDiv = $("<div>");
+
+                        var rating = results[i].rating;
+
+                        var p = $("<p>").text("Rating: " + rating);
+
+                        var animalImage = $("<img>");
+                        animalImage.attr("src", results[i].images.fixed_height.url);
+
+                        gifDiv.prepend(p);
+                        gifDiv.prepend(animalImage);
+
+                        $("#gifs-appear-here").prepend(gifDiv);
+                    }
+                });
+        });
+
+        
 
     </script>
 
 
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>
