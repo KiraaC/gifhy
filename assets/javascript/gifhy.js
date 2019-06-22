@@ -31,16 +31,32 @@ $(".animalBtn").on("click", function () {
 
 })
 
- $("#submit").on("click", function (event) {
-        event.preventDefault();
-        // grab value from anchor
-        newAnimal = $("#bar").val()
-        console.log(newAnimal)
-        newAnimal.text
-        // create a new btn
-        // add button text , set = to newanimal varible.
-        // append btn to page
+$("#submit").on("click", function (event) {
+    event.preventDefault();
+    // grab value from anchor
+    newAnimal = $("#bar").val()
+    console.log(newAnimal)
+    newAnimal.text
 
-        // pause buttons
+    // create a new btn
+    addButton($("#animalBtn"))
+    // add button text , set = to newanimal varible.
+    // append btn to page
+    newImage.append(newAnimal);
+    $("#images-might-appear-here")
 
-    })
+    // pause buttons
+    // $("#images-might-appear-here).on("click", funtion(){
+    //     $"#images-might-appear-here"
+    if ($(this).attr("state") === "still") {
+        $(this).attr("state", "animated");
+        $(this).attr("src", $(this).attr("animate-data"));
+    }
+    else {
+        $(this).attr("state", "still");
+        $(this).attr("src", $(this).attr("still-data"));
+    }
+
+})
+
+ 
