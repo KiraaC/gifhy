@@ -1,0 +1,9 @@
+body { 
+    background: radial-gradient(circle, blue, yellow);
+}
+.buttons {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: aqua;
+
+}
